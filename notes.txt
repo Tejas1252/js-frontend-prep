@@ -1,0 +1,6 @@
+npx tsx watch "Javascript/DSA/bubble-sort.ts"
+
+Insertion sort: https://www.youtube.com/watch?v=YaC95XsWvPE
+Merge sort: https://www.youtube.com/watch?v=cQDtOBTy7_Y
+
+Prototype: https://www.youtube.com/watch?v=AOPmqw9scfc
