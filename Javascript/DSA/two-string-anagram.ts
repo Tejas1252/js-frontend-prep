@@ -32,7 +32,7 @@ function isAnagram(arr: Array<string>) {
   for (let item of Object.entries(firstConvertedObj)) {
     if (
       secondConvertedObj[item[0]] &&
-      firstConvertedObj[item[1]] === secondConvertedObj[item[1]]
+      firstConvertedObj[item[0]] === secondConvertedObj[item[0]]
     ) {
       continue;
     } else {
@@ -47,3 +47,32 @@ function isAnagram(arr: Array<string>) {
 console.log(isAnagram(arr));
 
 export {};
+
+// Time complecity: O(n)
+// Space complecity: O(n)
+
+// Same solution diffrent syntax:
+function isAnagram2(arr: string[]): boolean {
+  const [first, second] = arr;
+
+  if (first.length !== second.length) {
+    return false;
+  }
+
+  const firstObj = arrToObj(first);
+  const secondObj = arrToObj(second);
+
+  for (const [char, count] of Object.entries(firstObj)) {
+    if (secondObj[char] !== count) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+// console.log(isAnagram2(["listen", "silent"])); // true
+// console.log(isAnagram2(["hello", "world"]));  // false
+
+// Time complecity: O(n)
+// Space complecity: O(n)
