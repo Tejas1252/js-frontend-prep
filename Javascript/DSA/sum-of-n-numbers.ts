@@ -14,3 +14,14 @@ function sum(...args: Array<Number>): Number {
 console.log(sum(7, 11, 22, 30, 40));
 
 export {};
+
+// Time complecity: O(n)
+// Space complecity: O(1)
+
+// Alternate solution
+function sum2(...args: number[]): number {
+  return args.reduce((total, item) => total + item, 0);
+}
+
+// Time complecity: O(n)
+// Space complecity: O(1) excluding the inout storage
