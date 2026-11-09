@@ -26,3 +26,26 @@ export {};
 
 // Time complecity: O(n)
 // Space complecity: O(n)
+
+// Alternate solution
+function isPalindrome2(str: string): boolean {
+  let start = 0;
+  let end = str.length - 1;
+
+  while (start < end) {
+    if (str[start] !== str[end]) {
+      return false;
+    }
+
+    start++;
+    end--;
+  }
+
+  return true;
+}
+
+console.log(isPalindrome("malayalam")); // true
+console.log(isPalindrome("tejas")); // false
+
+// Time complecity: O(n)
+// Space complecity: O(1)
