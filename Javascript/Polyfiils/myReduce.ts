@@ -5,15 +5,47 @@
 // ["t","e","j","a","s"].reduce((acc,n)=> acc+n)
 // output: 'tejas'
 
-Array.prototype.myReduce = function (callbackFn, initVal) {
-  let accumulator = initVal;
+Array.prototype.myReduce = function (callbackFn, initialValue) {
+  // Handle null or undefined
+  if (this == null) {
+    throw new TypeError("Cannot read properties of null or undefined");
+  }
 
-  if (initVal == undefined) {
-    accumulator = this[0];
+  // Validate callback
+  if (typeof callbackFn !== "function") {
+    throw new TypeError("Callback must be a function");
   }
-  for (let i = initVal == undefined ? 1 : 0; i < this.length; i++) {
-    accumulator = callbackFn(accumulator, this[i]);
+
+  const arr = Object(this);
+  const len = arr.length >>> 0;
+
+  let accumulator;
+  let startIndex = 0;
+
+  // Check whether initialValue was provided
+  if (arguments.length >= 2) {
+    accumulator = initialValue;
+  } else {
+    // Find the first existing element
+    while (startIndex < len && !(startIndex in arr)) {
+      startIndex++;
+    }
+
+    // No initial value and no elements
+    if (startIndex >= len) {
+      throw new TypeError("Reduce of empty array with no initial value");
+    }
+
+    accumulator = arr[startIndex];
+    startIndex++;
   }
+
+  for (let i = startIndex; i < len; i++) {
+    if (i in arr) {
+      accumulator = callbackFn(accumulator, arr[i], i, arr);
+    }
+  }
+
   return accumulator;
 };
 
