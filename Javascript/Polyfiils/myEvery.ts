@@ -31,6 +31,7 @@ Array.prototype.myEvery = function (callbackFn, thisArg) {
 };
 
 const arr = new Array(1, 2, 3, 4, 5, 6, 7);
+// const arr = [1, 2, 3];
 
 console.log(
   "myEvery result:",
