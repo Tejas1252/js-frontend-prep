@@ -3,7 +3,7 @@
 
 const str = "aaabbcccaaa";
 
-function CompressString(str: String): String {
+function CompressString(str: String) {
   let res = "";
   let i = 0;
   let j = 0;
