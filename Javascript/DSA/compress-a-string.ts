@@ -1,20 +1,25 @@
-// Check if give array is sorted or not
-// input: arr=[4, 5, 6, 7]  output:  sorted
-// input: arr=[4, 50, 16, 77]  output:  not sorted
+// Compress a string
+// Input: "aaabbcccaaa" Output: "a3b2c3a3"
 
-const arr = [4, 5, 6, 7];
-// const arr = [4, 50, 16, 77];
+const str = "aaabbcccaaa";
 
-function checkIfSorted(arr: Array<number>): String {
-  let sorted = true;
-  for (let i = 0; i < arr.length - 1; i++) {
-    if (arr[i + 1] < arr[i]) {
-      sorted = false;
+function CompressString(str: String): String {
+  let res = "";
+  let i = 0;
+  let j = 0;
+  while (j <= str.length) {
+    if (str[i] == str[j]) {
+      j++;
+    } else {
+      res += str[i] + (j - i);
+      i = j;
+      j++;
     }
   }
-  return sorted ? "sorted" : "not sorted";
+
+  console.log("Compressed String:", res);
 }
-console.log(checkIfSorted(arr));
+console.log(CompressString(str));
 
 export {};
 
