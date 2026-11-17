@@ -26,3 +26,31 @@ export {};
 
 // Time complecity: O(n^2)
 // Space complecity: O(1)
+
+// Alternate solution
+const arr2 = [4, 33, 12, 6, 70, 54];
+
+function findSecondLargest(arr) {
+  let largest = 0;
+  let largestIndex = 0;
+  let secondLargest = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > largest) {
+      largest = arr[i];
+      largestIndex = i;
+    }
+  }
+
+  arr.splice(largestIndex, 1);
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > secondLargest) {
+      secondLargest = arr[i];
+    }
+  }
+  return secondLargest;
+}
+
+const res = findSecondLargest(arr2);
+console.log("Second largest:", res);
