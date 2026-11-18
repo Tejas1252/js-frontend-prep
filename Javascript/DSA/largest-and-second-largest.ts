@@ -30,7 +30,7 @@ export {};
 // Alternate solution
 const arr2 = [4, 33, 12, 6, 70, 54];
 
-function findSecondLargest(arr) {
+function findSecondLargest(arr: Array<number>) {
   let largest = 0;
   let largestIndex = 0;
   let secondLargest = 0;
