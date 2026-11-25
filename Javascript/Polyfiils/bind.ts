@@ -41,3 +41,39 @@ const name = getName.myBind(user, "india");
 name("mumbai");
 
 export {};
+
+// Alternate or more advanced which covers all the edge cases
+
+/**
+ * 
+Function.prototype.myBind = function (thisArg, ...bindArgs) {
+  // 1. Ensure myBind is called on a function
+  if (typeof this !== "function") {
+    throw new TypeError("myBind must be called on a function");
+  }
+
+  const originalFn = this;
+
+  // 2. Return a new function
+  function boundFn(...callArgs) {
+    // 3. Check whether boundFn was called using `new`
+    const isConstructorCall = this instanceof boundFn;
+
+    // 4. Determine the correct `this`
+    const context = isConstructorCall ? this : thisArg;
+
+    // 5. Combine arguments and invoke original function
+    return originalFn.apply(context, [...bindArgs, ...callArgs]);
+  }
+
+  // 6. Preserve prototype chain for constructor behavior
+  if (originalFn.prototype) {
+    boundFn.prototype = Object.create(originalFn.prototype);
+
+    // Restore constructor property
+    boundFn.prototype.constructor = boundFn;
+  }
+
+  return boundFn;
+};
+ */
