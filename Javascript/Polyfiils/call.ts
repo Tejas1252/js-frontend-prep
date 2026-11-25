@@ -14,7 +14,7 @@
  * Output: Name: Tejas
  */
 
-Function.prototype.myCall = function (obj: any) {
+Function.prototype.myCall = function (obj: object) {
   if (typeof obj !== "object") {
     throw new TypeError("obj is required");
   }
@@ -30,7 +30,7 @@ const user = {
   name: "Tejas",
 };
 
-function getName(name: string) {
+function getName(this: any) {
   console.log("Name:", this.name);
 }
 
