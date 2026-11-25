@@ -1,4 +1,4 @@
-// Polyfill for every
+// Polyfill for apply
 /**
  * input:
  * user={
