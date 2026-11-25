@@ -28,5 +28,5 @@ String.prototype.myEndsWith = function (strVal) {
 const str = "tejas";
 console.log("myEndsWith result:", str.myEndsWith("ajas"));
 
-// Time Complexity: O(n)
+// Time Complexity: O(m) m= length of the searching string
 // Space Complexity: O(1)
