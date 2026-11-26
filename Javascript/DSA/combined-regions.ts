@@ -1,4 +1,4 @@
-// Combine regions group wise
+// Combine regions group wise. [group by key pattern]
 /**
  * const arr = [
   { name: "tejas", age: "26", region: "EMA" },
@@ -9,24 +9,18 @@
   { name: "matt", age: "27", region: "mumbai" },
 ];
 
-output: Obj={
-regions:
+output: 
 {
   EMA: [
-    { name: "tejas", age: "26", region: "EMA" },
-     { name: "praful", age: "36", region: "EMA" }
+    { name: 'tejas', age: '26', region: 'EMA' },
+    { name: 'praful', age: '36', region: 'EMA' }
   ],
-mumbai: [
-{ name: "amit", age: "21", region: "mumbai" },
-  { name: "matt", age: "27", region: "mumbai" }
-],
-pune: [
-  { name: "rahul", age: "20", region: "Pune" }
-  }
-],
-latur:[
-{ name: "sid", age: "36", region: "latur" }
- ]
+  Pune: [ { name: 'rahul', age: '20', region: 'Pune' } ],
+  mumbai: [
+    { name: 'amit', age: '21', region: 'mumbai' },
+    { name: 'matt', age: '27', region: 'mumbai' }
+  ],
+  latur: [ { name: 'sid', age: '36', region: 'latur' } ]
 }
  */
 
@@ -35,27 +29,19 @@ const arr = [
   { name: "rahul", age: "20", region: "Pune" },
   { name: "amit", age: "21", region: "mumbai" },
   { name: "praful", age: "36", region: "EMA" },
-  { name: "sid", age: "36", region: "latue" },
+  { name: "sid", age: "36", region: "latur" },
   { name: "matt", age: "27", region: "mumbai" },
 ];
 
-function combineRegions(str: Array<obj>): object {
+function combineRegions(arr: Array<any>): object {
   const obj = {};
-  let res = "";
-  let i = 0;
-  let j = 0;
-  while (j <= str.length) {
-    if (str[i] == str[j]) {
-      j++;
+  for (let i = 0; i < arr.length; i++) {
+    if (!obj[arr[i].region]) {
+      obj[arr[i].region] = [arr[i]];
     } else {
-      res += str[i] + (j - i);
-      i = j;
-      j++;
+      obj[arr[i].region].push(arr[i]);
     }
   }
-
-  console.log("Compressed String:", res);
-
   return obj;
 }
 console.log(combineRegions(arr));
@@ -63,4 +49,4 @@ console.log(combineRegions(arr));
 export {};
 
 // Time complecity: O(n)
-// Space complecity: O(1)
+// Space complecity: O(n)
